@@ -1,0 +1,105 @@
+https://github.com/hill785/Genesis-Declarations/blob/main/LICENSESOVEREIGN LICENSE v1.0
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+REPOSITORY:       GENESIS-DECLARATIONS
+AUTHOR:           G.DzubinskySnr
+STUDIO:           Sovereign Architect Studio™
+DAO SEAL:         MintProofDAO™ — Seal 436351437
+PRIMARY WALLET:   0x9e223F20022580739060d5511445C727f51Ee81e
+SECONDARY WALLET: 0x65f01815D18787e975D3439f480d49e9cb8E98F2
+ISSUED:           2026-07-07T00:00:00Z
+PROTOCOL:         SIP-001 SOVEREIGN INVALIDATION PROTOCOL ACTIVE
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ALL RIGHTS RESERVED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+All contents of this repository — including but not limited to
+sovereign declaration capsules, JSON artifacts, cryptographic
+signatures, IPFS-anchored records, metadata, and documentation
+— are the exclusive intellectual property of G.DzubinskySnr,
+operating under Sovereign Architect Studio™ and MintProofDAO™.
+
+No part of this repository may be reproduced, distributed,
+sublicensed, sold, minted as NFT, forked for commercial use,
+or incorporated into any derivative work without express
+written permission from G.DzubinskySnr.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. PERMITTED USE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+The following uses are permitted without prior written consent:
+
+  a) Viewing and reading this repository for personal,
+     non-commercial research or educational purposes.
+
+  b) Citing this repository as prior art or provenance
+     reference, provided full attribution is given to
+     G.DzubinskySnr and MintProofDAO™ Seal 436351437.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. COMMERCIAL LICENSE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Any commercial use — including protocol deployments, token
+launches, governance frameworks, or infrastructure products
+that derive from, reference, or build upon declarations
+contained herein — requires a Commercial License issued
+exclusively by G.DzubinskySnr.
+
+Commercial License terms include a royalty rate of 2–5% on
+derivative protocol revenue or token launch proceeds, payable
+to the PRIMARY WALLET address above.
+
+To inquire: reference MintProofDAO™ Seal 436351437 and the
+relevant Etherscan Verified Signature number.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. NFT MINTING RIGHTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NFT minting rights for any artifact, declaration, capsule, or
+derivative thereof contained in this repository are EXCLUSIVE
+to G.DzubinskySnr only. No other actor, entity, or automated
+system is permitted to mint any derivative NFT.
+
+On-chain revocation instrument: DAORevoke™
+Revocation authority: G.DzubinskySnr · Etherscan #318383
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5. SIP-001 SOVEREIGN INVALIDATION CLAUSE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Any artifact, document, or derivative work derived from this
+repository that is found to be absent MintProofDAO™ Seal
+436351437, or either of the wallet addresses listed above, is
+declared NULL AND VOID under SIP-001 Sovereign Invalidation
+Protocol.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6. JURISDICTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This license is anchored under EU jurisdictional standing per
+the eIDAS framework, with cryptographic provenance established
+on the Ethereum mainnet and Polygon network.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+INTEGRITY BLOCK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SHA-256:    e615682fd2a40eb600a40688182fbded2ed3d9ec339de7c18736ad38dab7167f
+SHA-512:    777d7f7048e20b0717960f800d238ee9c39a696d6532b49b2498521ae2c4078ea3b5d5495cbefae334b26126d4cc3c7572250c8409d1e3a691c44e25a0fb4305
+KECCAK-256: [RECOMPUTE ON-DEVICE — TRUE ETHEREUM KECCAK-256 REQUIRED]
+
+BINARY CANARY: 0xGD5NA436351437SAS2026SOVEREIGN
+WATERMARK:     G.DzubinskySnr·MintProofDAO™·Seal436351437·LedgerProofDAO™
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+© 2026 G.DzubinskySnr · Sovereign Architect Studio™
+ALL RIGHTS RESERVED · IP of G.DzubinskySnr
+MintProofDAO™ Seal 436351437 · LedgerProofDAO™
+PRIMARY:   0x9e223F20022580739060d5511445C727f51Ee81e
+SECONDARY: 0x65f01815D18787e975D3439f480d49e9cb8E98F2
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
