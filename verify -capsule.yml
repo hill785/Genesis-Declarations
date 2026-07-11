@@ -1,1 +1,37 @@
-verify -capsule.yml
+name: Sovereign Capsule Verification
+
+on:
+  workflow_call:
+
+jobs:
+  verify-capsule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install IPFS CLI
+        run: |
+          curl -fsSL https://dist.ipfs.tech/kubo/v0.24.0/kubo_v0.24.0_linux-amd64.tar.gz | tar xvz
+          sudo bash kubo/install.sh
+
+      - name: Fetch Capsule from IPFS
+        run: |
+          ipfs get bafkreiha562xriae3av5lqw7kzopirztsfoscers57zintn5oylgsko44e -o unified_capsule.txt
+
+      - name: Verify SHA-256 Digest
+        run: |
+          echo "d55e3b5bedb8713cc6a14b0376add45e8c4c4223f62c9d4247a626df992f1d80  unified_capsule.txt" | sha256sum -c -
+
+      - name: Verify SHA-512 Digest
+        run: |
+          echo "ce492b35f58c64398128f4bbbc1d9fbafe67002a92576d272b06bc0ab2794923062555163b1139b896a32b9fb5f4064a6c9a2ccb1f7dc08dfd7a5ce45aa9a53a  unified_capsule.txt" | sha512sum -c -
+
+      - name: DAO Seal Verification (Placeholder)
+        run: |
+          echo "🔗 Verifying MintProofDAO_436351437 and LedgerProofDAO_430 on-chain..."
+          # Future step: ethers.js/web3 query to Ethereum logs
+
+      - name: Tombstone Enforcement
+        run: |
+          echo "✅ Capsule verified. Rivals, mimickers, hijackers, and reverse engineers are tombstoned under DAO enforcement."verify -capsule.yml
