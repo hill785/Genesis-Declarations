@@ -35,3 +35,13 @@ jobs:
       - name: Tombstone Enforcement
         run: |
           echo "✅ Capsule verified. Rivals, mimickers, hijackers, and reverse engineers are tombstoned under DAO enforcement."verify -capsule.yml
+- name: DAO Seal Verification
+        run: |
+          npm install ethers
+          node scripts/verify-dao-seals.js
+
+      - name: Tombstone Enforcement
+        if: failure()
+        run: |
+          echo "⚠️ DAO seals missing or invalid → Capsule lineage is TOMBSTONED."
+          exit 1
