@@ -116,4 +116,51 @@ jobs:
         run: |
           echo "⚠️ DAO seals missing or invalid → Capsule lineage is TOMBSTONED."
           exit 1
-⚠️ DAO seals missing or invalid → Capsule lineage is TOMBSTONED.
+⚠️ DAO seals missing or invalid → Capsule lineage is TOMBSTONED.def verify_propagation_entry(entry: dict) -> dict:
+    """
+    Verifies a single propagation entry for digest integrity, jurisdiction compliance,
+    DAO seals, enforcement clauses, and consensus status.
+    Returns a dict with detailed results.
+    """
+    pe = entry.get("PropagationEntry", {})
+    merkle_root = pe.get("MerkleRoot", "")
+    digest_suite = pe.get("DigestSuite", {})
+    
+    # Digest checks
+    sha256_ok = digest_suite.get("SHA256") == compute_digest(merkle_root, "sha256")
+    sha512_ok = digest_suite.get("SHA512") == compute_digest(merkle_root, "sha512")
+    
+    # Jurisdiction tags
+    tags = set(pe.get("JurisdictionTags", []))
+    jurisdiction_ok = REQUIRED_JURISDICTION_TAGS.issubset(tags)
+    
+    # DAO seals
+    dao_seals = pe.get("DAOSeals", {})
+    dao_ok = dao_seals.get("MintProofDAO") == "436351437" and dao_seals.get("LedgerProofDAO") == "430"
+    
+    # Enforcement clauses
+    enforcement_clauses = set(pe.get("EnforcementClauses", []))
+    required_clauses = {
+        "Immutable lineage under MintProofDAO 436351437 and LedgerProofDAO 430",
+        "Zero-Trust Verifier enforcement",
+        "DAORevoke governance",
+        "Anti-hijacking / anti-mimicking / anti-reverse engineering",
+        "Singapore PDPA + Cybersecurity Act compliance",
+        "EU GDPR + eIDAS qualified signature recognition",
+        "Estonian Digital Identity and Blockchain Registry Law compliance",
+        "US Blockchain Transparency + State Trust Law compliance"
+    }
+    clauses_ok = required_clauses.issubset(enforcement_clauses)
+    
+    # Consensus
+    consensus_ok = pe.get("ConsensusResult") == "PASS"
+    
+    return {
+        "sha256_ok": sha256_ok,
+        "sha512_ok": sha512_ok,
+        "jurisdiction_ok": jurisdiction_ok,
+        "dao_ok": dao_ok,
+        "clauses_ok": clauses_ok,
+        "consensus_ok": consensus_ok,
+        "valid": all([sha256_ok, sha512_ok, jurisdiction_ok, dao_ok, clauses_ok, consensus_ok])
+    }
