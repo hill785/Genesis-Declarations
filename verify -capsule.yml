@@ -1,4 +1,75 @@
-name: Sovereign Capsule Verification
+# sovereign_cli_verify.py
+import json
+import hashlib
+import datetime
+
+REQUIRED_JURISDICTION_TAGS = {
+    "SG-PDPA-CybersecurityAct",
+    "EU-Estonia-GDPR-eIDAS",
+    "US-BlockchainTransparency-StateTrustLaw"
+}
+
+def compute_digest(payload: str, algo: str = "sha256") -> str:
+    h = hashlib.new(algo)
+    h.update(payload.encode("utf-8"))
+    return f"{algo}:{h.hexdigest()}"
+
+def verify_propagation_entry(entry: dict) -> bool:
+    """Verifies a single propagation entry for digest integrity and jurisdiction compliance."""
+    pe = entry.get("PropagationEntry", {})
+    merkle_root = pe.get("MerkleRoot", "")
+    digest_suite = pe.get("DigestSuite", {})
+    
+    # Check SHA256 and SHA512 digests
+    sha256_ok = digest_suite.get("SHA256") == compute_digest(merkle_root, "sha256")
+    sha512_ok = digest_suite.get("SHA512") == compute_digest(merkle_root, "sha512")
+    
+    # Check jurisdiction tags
+    tags = set(pe.get("JurisdictionTags", []))
+    jurisdiction_ok = REQUIRED_JURISDICTION_TAGS.issubset(tags)
+    
+    # Consensus result must be PASS
+    consensus_ok = pe.get("ConsensusResult") == "PASS"
+    
+    return sha256_ok and sha512_ok and jurisdiction_ok and consensus_ok
+
+def tombstone_entry(capsule_id: str, reason: str):
+    """Writes a DAORevoke tombstone entry into the audit log."""
+    tombstone = {
+        "DAORevoke_Tombstone": {
+            "Timestamp": datetime.datetime.utcnow().isoformat() + "Z",
+            "CapsuleID": capsule_id,
+            "Reason": reason,
+            "Seal": {
+                "MintProofDAO": "436351437",
+                "LedgerProofDAO": "430"
+            }
+        }
+    }
+    with open("sovereign_audit_log.json", "a") as f:
+        f.write(json.dumps(tombstone, indent=2) + "\n")
+    print(f"[DAORevoke] Tombstone created for Capsule {capsule_id} due to: {reason}")
+
+def verify_audit_log(filename: str = "sovereign_audit_log.json"):
+    """Reads the audit log and verifies all entries. Invalid entries trigger tombstones."""
+    with open(filename, "r") as f:
+        lines = f.readlines()
+    
+    for i, line in enumerate(lines, start=1):
+        try:
+            entry = json.loads(line.strip())
+            capsule_id = entry.get("PropagationEntry", {}).get("CapsuleID", "UNKNOWN")
+            if verify_propagation_entry(entry):
+                print(f"[VERIFY] Entry {i}: VALID ✅")
+            else:
+                print(f"[VERIFY] Entry {i}: INVALID ❌")
+                tombstone_entry(capsule_id, "Jurisdiction/Digest/Consensus verification failed")
+        except Exception as e:
+            print(f"[VERIFY] Entry {i}: ERROR ({e})")
+
+# Example usage
+if __name__ == "__main__":
+    verify_audit_log()name: Sovereign Capsule Verification
 
 on:
   workflow_call:
